@@ -1,202 +1,146 @@
-const dados = {
-            "autores": [
-                {
-                    "nome": "J.K. Rowling",
-                    "nacionalidade": "Britânica",
-                    "descricao": "Autora britânica, conhecida mundialmente por criar a série de livros \"Harry Potter\". Sua obra teve um impacto significativo na literatura infantojuvenil e na cultura popular. ",
-                    "imagem": "img/Harry Potter/J.K.jpg",
-                    "altImagem": "J.K. Rowling",
-                    "obrasListadas": [
-                        "Harry Potter e a Pedra Filosofal",
-                        "Harry Potter e a Câmara Secreta",
-                        "Harry Potter e o Prisioneiro de Azkaban",
-                        "Harry Potter e o Cálice de Fogo",
-                        "Harry Potter e a Ordem da Fênix",
-                        "Harry Potter e o Enigma do Príncipe",
-                        "Harry Potter e as Relíquias da Morte"
-                    ]
-                },
-                {
-                    "nome": "Tite Kubo",
-                    "nacionalidade": "Japonês",
-                    "descricao": "Autor japonês de mangás, mais conhecido por criar a série \"Bleach\". Sua obra é famosa por suas batalhas intensas, personagens cativantes e um enredo complexo que envolve o mundo dos espíritos e dos Ceifadores de Almas.",
-                    "imagem": "img/Bleach/Tite Kubo.jpg",
-                    "altImagem": "Tite Kubo",
-                    "obrasListadas": [
-                        "Bleach",
-                        "Zombiepowder.",
-                        "Burn the Witch"
-                    ]
-                }
-            ],
-            "personagens": [], 
-            "obrasPrincipais": [],
-            "rodape": "(c) Copyright 2025 - Todos os direitos reservados"
-        };
+const authorsData = [
+    {
+        id: 1,
+        fullName: "Joanne Rowling",
+        name: "J.K. Rowling",
+        image: "img/Harry Potter/J.K.jpg", 
+        birthDate: "31 de julho de 1965",
+        birthCity: "Yate, Gloucestershire, Inglaterra",
+        firstPublicationDate: "26 de junho de 1997",
+        mostSuccessfulWork: "Harry Potter e a Pedra Filosofal",
+        summary: "J.K. Rowling é uma romancista e roteirista britânica, mais conhecida como a autora da série de fantasia Harry Potter, que vendeu mais de 500 milhões de cópias e se tornou a série de livros mais vendida da história.",
+        works: [
+            { title: "Harry Potter e a Pedra Filosofal", coverImage: "img/Harry Potter/HPFilosofal.jpg" },
+            { title: "Harry Potter e a Câmara Secreta", coverImage: "img/Harry Potter/HPCamara.jpg" },
+            { title: "Harry Potter e o Prisoneiro de Azkaban", coverImage: "img/Harry Potter/HPPrisioneiro.jpg" },
+            { title: "Harry Potter e o Cálice de Fogo", coverImage: "img/Harry Potter/HPCalice.jpg" },
+            { title: "Harry Potter e a Ordem da Fênix", coverImage: "img/Harry Potter/HPOrdem.jpg" },
+            { title: "Harry Potter e o Enigma do Príncipe", coverImage: "img/Harry Potter/HPEnigma.jpg" },
+            { title: "Harry Potter e as Relíquias da Morte", coverImage: "img/Harry Potter/HPReliquias.png" },
+            { title: "Morte Súbita (The Casual Vacancy)", coverImage: "img/Harry Potter/Subita.jpg" },
+            { title: "Os Contos de Beedle, o Bardo", coverImage: "img/Harry Potter/Beedle.jpg" },
+        ]
+    },
+    {
+        id: 2,
+        fullName: "Noriaki Kubo",
+        name: "Tite Kubo",
+        image: "img/Bleach/Tite Kubo.jpg", 
+        birthDate: "26 de junho de 1977",
+        birthCity: "Fuchū, Hiroshima, Japão",
+        firstPublicationDate: "1999 (Zombiepowder.)",
+        mostSuccessfulWork: "Bleach",
+        summary: "Noriaki Kubo, conhecido pelo pseudônimo Tite Kubo, é um mangaká japonês. Ele é mundialmente famoso por sua série de mangá Bleach, que foi serializada de 2001 a 2016 e vendeu mais de 130 milhões de volumes globalmente.",
+        works: [
+            { title: "Bleach - Volume 1", coverImage: "img/Bleach/Capa.jpg" },
+            { title: "Bleach - The Death and the Strawberry", coverImage: "img/Bleach/Death.jpg" },
+            { title: "Burn the Witch", coverImage: "img/Bleach/Burn.jpg" },
+            { title: "Zombiepowder. - Volume 1", coverImage: "img/Bleach/Zombie.jpg" }
+        ]
+    },
+    {
+        id: 3,
+        fullName: "George Raymond Richard Martin",
+        name: "George R.R. Martin",
+        image: "img/Gelo&Fogo/George RR Martin.jpg", 
+        birthDate: "20 de setembro de 1948",
+        birthCity: "Bayonne, Nova Jersey, EUA",
+        firstPublicationDate: "1971 (The Hero)",
+        mostSuccessfulWork: "As Crônicas de Gelo e Fogo (A Game of Thrones)",
+        summary: "George R.R. Martin é um escritor e roteirista americano de fantasia e ficção científica. Ele é mais conhecido pela série de livros 'As Crônicas de Gelo e Fogo', adaptada para a aclamada série de TV 'Game of Thrones'.",
+        works: [
+            { title: "A Guerra dos Tronos", coverImage: "img/Gelo&Fogo/Tronos.jpg" },
+            { title: "A Fúria dos Reis", coverImage: "img/Gelo&Fogo/Furia.jpg" },
+            { title: "A Morte da Luz", coverImage: "img/Gelo&Fogo/Morte.jpg" },
+            { title: "O Cavaleiro dos Sete Reinos", coverImage: "img/Gelo&Fogo/Cavaleiro.jpg" },
+        ]
+    }
+];
+ if (document.getElementById('authors-list')) {
+    const authorsListDiv = document.getElementById('authors-list');
+
+    authorsData.forEach(author => {
+        const colDiv = document.createElement('div');
+        colDiv.className = 'col-lg-4 col-md-6';
+
+        const cardLink = document.createElement('a');
+        cardLink.href = `detalhes.html?id=${author.id}`;
+        cardLink.className = 'text-decoration-none text-dark';
         
-        const headerData = {
-            "brandName": "Encanto",
-            "searchPlaceholder": "Pesquisa",
-            "searchButtonText": "OK",
-            "mainLinks": [
-                { "text": "Home", "href": "index.html", "isCurrent": true, "type": "link" },
-                {
-                    "text": "Menu",
-                    "type": "dropdown",
-                    "links": [
-                        { "text": "Autores", "href": "index.html", "type": "item" },
-                        { "text": "Obras", "href": "obras.html", "type": "item" },
-                        { "type": "divider" },
-                        { "text": "Personagens", "href": "personagens.html", "type": "item" }
-                    ]
-                },
-                { "text": "Login", "href": "#", "isCurrent": false, "type": "link" }
-            ]
-        };
- const dadosobras = {
-            "autores": [],
-            "personagens": [], 
-            "obrasPrincipais": [
-                {
-                    "titulo": "Harry Potter",
-                    "autor": "J.K. Rowling",
-                    "status": "Completo",
-                    "imagem": "img/Harry Potter/Capa.jpg",
-                    "altImagem": "Emblema de Hogwarts"
-                },
-                {
-                    "titulo": "Bleach",
-                    "autor": "Tite Kubo",
-                    "status": "Completo",
-                    "imagem": "img/Bleach/Capa.jpg",
-                    "altImagem": "Capa de Bleach"
-                }
-            ],
-            "rodape": "(c) Copyright 2025 - Todos os direitos reservados"
-        };
-
-        function renderizarHeader() {
-            const container = document.getElementById('header-container');
-
-            const linksHtml = headerData.mainLinks.map(link => {
-                let currentLink = link;
-
-                if (link.text === 'Home') {
-                    currentLink.isCurrent = true;
-                } else if (link.type === 'dropdown') {
-                    currentLink.links = link.links.map(item => ({ 
-                        ...item, 
-                        isCurrent: (item.text === 'Autores') 
-                    }));
-                }
-
-                if (currentLink.type === 'link') {
-                    const activeClass = currentLink.isCurrent ? 'active' : '';
-                    const ariaCurrent = currentLink.isCurrent ? 'aria-current="page"' : '';
-                    return `
-                        <li class="nav-item">
-                            <a class="nav-link ${activeClass}" ${ariaCurrent} href="${currentLink.href}">
-                                ${currentLink.text}
-                            </a>
-                        </li>
-                    `;
-                } else if (currentLink.type === 'dropdown') {
-                    const dropdownItems = currentLink.links.map(item => {
-                        if (item.type === 'item') {
-                            return `<li><a class="dropdown-item" href="${item.href}">${item.text}</a></li>`;
-                        } else if (item.type === 'divider') {
-                            return `<li><hr class="dropdown-divider"></li>`;
-                        }
-                    }).join('');
-                    
-                    return `
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                ${currentLink.text}
-                            </a>
-                            <ul class="dropdown-menu">
-                                ${dropdownItems}
-                            </ul>
-                        </li>
-                    `;
-                }
-                return '';
-            }).join('');
-
-            const headerHtml = `
-                <header class="containe-fluid">
-                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                        <div class="container-fluid">
-                            <h1 class="navbar-brand">${headerData.brandName}</h1>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                    ${linksHtml}
-                                </ul>
-                                <form class="d-flex" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="${headerData.searchPlaceholder}" aria-label="Search"/>
-                                    <button class="btn btn-outline-success" type="submit">${headerData.searchButtonText}</button>
-                                </form>
-                            </div>
+        cardLink.innerHTML = `
+            <div class="card author-card h-100 shadow-sm">
+                <div class="row g-0">
+                    <div class="col-4 d-flex align-items-center justify-content-center p-3">
+                        <img src="${author.image}" class="img-fluid rounded-circle author-img" alt="Foto de ${author.name}">
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body">
+                            <h5 class="card-title">${author.name}</h5>
+                            <p class="card-text"><small class="text-muted">Obra de sucesso: ${author.mostSuccessfulWork}</small></p>
                         </div>
-                    </nav>
-                </header>
-            `;
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        colDiv.appendChild(cardLink);
+        authorsListDiv.appendChild(colDiv);
+    });
+}
 
-            container.insertAdjacentHTML('beforeend', headerHtml);
-        }
 
-        function renderizarAutores() {
-            const containerAutores = document.getElementById('container-autores');
+if (document.getElementById('author-details-container')) {
+    const params = new URLSearchParams(window.location.search);
+    const authorId = parseInt(params.get('id'));
 
-            dados.autores.forEach(autor => {
-                const listaObrasHTML = autor.obrasListadas.map(obra => `
-                    <li>${obra}</li>
-                `).join('');
-                
-                // Estrutura alterada para empilhar todos os elementos em uma única coluna (col-12)
-                const htmlAutor = `
-                    <section class="p-4 mt-3 bg-info-subtle border border-dark rounded-4 mb-4">
+    const container = document.getElementById('author-details-container');
+
+    if (authorId) {
+        const author = authorsData.find(a => a.id === authorId);
+
+        if (author) {
+            const worksHTML = author.works.map(work => `
+                <div class="col-6 col-md-4 col-lg-3 mb-4 text-center">
+                    <div class="card h-100 shadow-sm">
+                        <img src="${work.coverImage}" class="card-img-top p-2" alt="Capa de ${work.title}" style="height: 180px; object-fit: cover;">
+                        <div class="card-body p-2">
+                            <p class="card-text small m-0"><strong>${work.title}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+
+            container.innerHTML = `
+                <div class="card shadow mb-5">
+                    <div class="card-body p-5">
                         <div class="row">
-                            <!-- Imagem (coluna única, centralizada) -->
-                            <div class="col-12 text-center mb-4">
-                                <img src="${autor.imagem}" alt="${autor.altImagem}" class="img-fluid rounded-4" style="max-height: 300px; width: auto;">
+                            <div class="col-md-4 text-center border-end">
+                                <img src="${author.image}" class="img-fluid rounded-circle mb-3 author-detail-img" alt="Foto de ${author.fullName}">
+                                <h2 class="h4">${author.fullName}</h2>
                             </div>
-                            
-                            <!-- Informações (coluna única) -->
-                            <div class="col-12 mb-4">
-                                <h2 class="text-center">${autor.nome}</h2>
-                                <p class="text-muted text-center">${autor.nacionalidade}</p>
-                                <p>${autor.descricao}</p>
-                            </div>
-                            
-                            <!-- Obras Listadas (coluna única) -->
-                            <div class="col-12">
-                                <h3>Obras:</h3>
-                                <ol class="list-group list-group-flush list-group-numbered">
-                                    ${listaObrasHTML}
-                                </ol>
+                            <div class="col-md-8">
+                                <p class="lead">${author.summary}</p>
+                                <ul class="list-group list-group-flush mb-4">
+                                    <li class="list-group-item"><strong>Nome Completo:</strong> ${author.fullName}</li>
+                                    <li class="list-group-item"><strong>Nascimento:</strong> ${author.birthDate}</li>
+                                    <li class="list-group-item"><strong>Local de Nascimento:</strong> ${author.birthCity}</li>
+                                    <li class="list-group-item"><strong>Primeira Publicação:</strong> ${author.firstPublicationDate}</li>
+                                </ul>
                             </div>
                         </div>
-                    </section>
-                `;
-                containerAutores.insertAdjacentHTML('beforeend', htmlAutor);
-            });
+                    </div>
+                </div>
+                
+                <h2 class="mb-4 text-center text-primary">Obras Principais</h2>
+                <div class="row">
+                    ${worksHTML}
+                </div>
+            `;
+        } else {
+            container.innerHTML = `<div class="alert alert-danger" role="alert">Autor não encontrado.</div>`;
         }
-
-        function renderizarRodape() {
-            const rodape = document.getElementById('rodape');
-            if (rodape) {
-                rodape.textContent = dados.rodape;
-            }
-        }
-
-        function carregarConteudo() {
-            renderizarHeader();
-            renderizarAutores();
-            renderizarRodape();
-        }
-
-        document.addEventListener('DOMContentLoaded', carregarConteudo);
+    } else {
+        container.innerHTML = `<div class="alert alert-warning" role="alert">ID do autor não especificado.</div>`;
+    }
+}
