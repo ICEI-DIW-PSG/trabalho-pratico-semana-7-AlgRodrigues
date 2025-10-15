@@ -1,4 +1,35 @@
-/*Comportamento normal da página*/
-html {
-    height: 100%;
+/* --- Estilos Gerais --- */
+body {
+    /* Define o fundo da página como a cor padrão do Bootstrap light */
+    background-color: #f8f9fa;
+}
+
+/* --- Estilos para index.html (Lista de Autores) --- */
+.author-card {
+    cursor: pointer;
+    /* Adiciona uma transição suave para o efeito hover */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.author-card:hover {
+    /* Efeito de leve levantamento e sombra mais forte ao passar o mouse */
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
+
+.author-img {
+    /* Define o tamanho e garante que a imagem preencha a área sem distorcer */
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+/* --- Estilos para detalhes.html (Página de Detalhes) --- */
+.author-detail-img {
+    /* Define o tamanho da imagem de perfil na página de detalhes */
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    /* Adiciona uma borda sutil ao redor da imagem */
+    border: 4px solid #dee2e6;
 }
