@@ -13,10 +13,10 @@ Leia o enunciado completo no Canvas.
 
 ## Informações Gerais
 
-- Nome:
-- Matricula:
-- Proposta de projeto escolhida:
-- Breve descrição sobre seu projeto:
+- Nome: Ana Luiza Gomes Rodrigues
+- Matricula: 902081
+- Proposta de projeto escolhida: Artistas/Escritores e Obras
+- Breve descrição sobre seu projeto: Uma página para obter informações sobre escritores e suas obras.
 
 ## Print da Home-Page
 
